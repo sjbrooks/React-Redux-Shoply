@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
 
-import ProductsList from './ProductsList';
-import ShoppingCartPreview from './ShoppingCartPreview';
+import Routes from './Routes';
+import NavBar from './NavBar';
 import { useSelector, shallowEqual } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 
-/** App: Component that renders ShoppingCartPreview and ProductList components */
+/** App: Component that renders NavBar and ProductList components */
 
 function App() {
 
@@ -21,10 +22,15 @@ function App() {
     return total.toFixed(2);
   }
 
+  let cartTotalPrice = calculateCartTotal();
+  let cartItemQty = Object.values(cart).reduce((acc, val) => acc + val, 0);
+
   return (
     <div className="App">
-      <ShoppingCartPreview calculateCartTotal={calculateCartTotal} /> 
-      <ProductsList />
+      <BrowserRouter>
+        <NavBar cartItemQty={cartItemQty} cartTotalPrice={cartTotalPrice} />
+        <Routes cartTotalPrice={cartTotalPrice} />
+      </BrowserRouter>
     </div>
   );
 }

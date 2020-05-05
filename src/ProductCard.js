@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { addToCart, removeFromCart } from './actions';
 
@@ -16,7 +17,9 @@ function ProductCard({ name, id, price, image_url }) {
   return (
     <div className="ProductCard" id={id}>
       <h4>{name}</h4>
-      <img src={image_url} height="200px" width="auto" alt={`${name} product`} />
+      <Link to={`/products/${id}`}>
+        <img src={image_url} height="200px" width="auto" alt={`${name} product`} />
+      </Link>
       <p>{price}</p>
 
       <span>

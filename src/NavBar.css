@@ -1,0 +1,16 @@
+.NavBar {
+  background-color: #ddd;
+}
+
+.NavBar-links {
+  float: left;
+}
+
+.NavBar-links > * {
+  margin-left: 30px;
+}
+
+.NavBar p {
+  position: relative;
+  right: 30px;
+}
