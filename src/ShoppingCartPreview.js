@@ -1,15 +1,20 @@
 import React from 'react';
+import { useSelector, shallowEqual } from 'react-redux';
 
+/** ShoppingCartPreview: Component that renders data on the cart totals at the top of the page (qty and total) 
+ *    - Holds a prop of calculateCartTotals, a function passed down from App to calculate total price of the cart
+ *    - Used in App
+*/
 
-function ShoppingCartPreview({ cart }) {
+function ShoppingCartPreview({ calculateCartTotal }) {
 
-  console.log(`\n\n\n The value of cart in ShoppingCartPreview is `, cart, '\n\n\n');
-
-  let cartTotal = cart.reduce((acc, item) => acc + item.price, 0);
+  const cart = useSelector(st => st.cart, shallowEqual);
+  let cartTotal = calculateCartTotal();
+  let cartItemQty = Object.values(cart).reduce((acc, val) => acc + val, 0);
 
   return (
     <div className="ShoppingCartPreview">
-      <span><b>Items in Cart: {cart.length} Total: {cartTotal}</b></span>
+      <span><b>Items in Cart: {cartItemQty} Total: {cartTotal}</b></span>
     </div>
   )
 }

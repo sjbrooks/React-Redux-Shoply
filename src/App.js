@@ -5,31 +5,28 @@ import ProductsList from './ProductsList';
 import ShoppingCartPreview from './ShoppingCartPreview';
 import { useSelector, shallowEqual } from 'react-redux';
 
+
+/** App: Component that renders ShoppingCartPreview and ProductList components */
+
 function App() {
 
   const products = useSelector(st => st.products, shallowEqual);
   const cart = useSelector(st => st.cart, shallowEqual);
 
-  console.log(`\n\n\n The value of products in App is `, products, '\n\n\n');
+  function calculateCartTotal() {
+    let total = 0;
+    for (let productID in cart) {
+      total += (products[productID].price * cart[productID]);
+    }
+    return total;
+  }
 
   return (
     <div className="App">
-      <ShoppingCartPreview cart={cart} /> 
-      <ProductsList products={products} />
+      <ShoppingCartPreview calculateCartTotal={calculateCartTotal} /> 
+      <ProductsList />
     </div>
   );
 }
 
 export default App;
-
-
-/** App
- *  - Shopping Cart (state / context / redux)
- *  - Inventory (state / context / redux)
- *    - Item card component (buttons to increment / decrement but only image)
- *    - Detailed Item Page component (buttons to increment / decrement, details about product)
- *    - (Home) ItemList (maps through the items array)
- *    - Checkout page / shopping cart display component
- *    - Routes
- *    
- */
