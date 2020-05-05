@@ -1,6 +1,7 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 import { useSelector, shallowEqual } from 'react-redux';
+import './ProductsList.css';
 
 
 /** ProductsList: Component that renders a list of products available for purchase 

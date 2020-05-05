@@ -9,7 +9,7 @@ function rootReducer(state = INITIAL_STATE, action) {
 
     case ADD_TO_CART:
       let newCart = {...state.cart};
-      newCart[action.payload.id] = newCart[action.payload.id] + 1 || 1;
+      newCart[action.payload.id] = (newCart[action.payload.id] || 0) + 1;
       return {...state, cart: newCart };
     
     case REMOVE_FROM_CART:

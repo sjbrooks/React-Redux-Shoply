@@ -7,9 +7,10 @@ describe('tests rootReducer', () => {
     let output = reducer([1, 2, 3], { type: "NOT_FOUND" });
     expect(output).toEqual([1, 2, 3]);
   
-    const INITIAL_STATE = { products: {}, cart: {} };
-    output = reducer(INITIAL_STATE, { type: ADD_TO_CART, payload: { id: "nonExistantId" } });
-    expect(INITIAL_STATE).toEqual(({ products: {}, cart: {} }));
+    // not necessary
+    // const INITIAL_STATE = { products: {}, cart: {} };
+    // output = reducer(INITIAL_STATE, { type: ADD_TO_CART, payload: { id: "nonExistantId" } });
+    // expect(INITIAL_STATE).toEqual(({ products: {}, cart: {} }));
   });
 
   it('should return the updated state when an item is added to the cart', function() {

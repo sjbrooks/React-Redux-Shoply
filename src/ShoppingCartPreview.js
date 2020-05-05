@@ -8,13 +8,15 @@ import { useSelector, shallowEqual } from 'react-redux';
 
 function ShoppingCartPreview({ calculateCartTotal }) {
 
+  // pass cartItemQty and cartTotal down as props (consistency)
+
   const cart = useSelector(st => st.cart, shallowEqual);
   let cartTotal = calculateCartTotal();
   let cartItemQty = Object.values(cart).reduce((acc, val) => acc + val, 0);
 
   return (
     <div className="ShoppingCartPreview">
-      <span><b>Items in Cart: {cartItemQty} Total: {cartTotal}</b></span>
+      <span><b>Items in Cart: {cartItemQty} Total: ${cartTotal}</b></span>
     </div>
   )
 }

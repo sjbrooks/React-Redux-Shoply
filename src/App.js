@@ -18,7 +18,7 @@ function App() {
     for (let productID in cart) {
       total += (products[productID].price * cart[productID]);
     }
-    return total;
+    return total.toFixed(2);
   }
 
   return (
